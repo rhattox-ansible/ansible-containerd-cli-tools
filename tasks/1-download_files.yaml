@@ -6,3 +6,12 @@
     force: false
     validate_certs: true
     timeout: 60
+
+- name: Download the crictl release tarball
+  ansible.builtin.get_url:
+    url: "{{ crictl_url }}"
+    dest: "{{ temporary_folder }}/crictl.tar.gz"
+    mode: "0644"
+    force: false
+    validate_certs: true
+    timeout: 60

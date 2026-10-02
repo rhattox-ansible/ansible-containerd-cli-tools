@@ -1,31 +1,31 @@
-- name: Starting containerd nerdctl installation
+- name: Starting containerd nerdctl and crictl installation
   ansible.builtin.debug:
     msg:
       - "=================================================="
-      - "Starting containerd nerdctl installation..."
+      - "Starting containerd nerdctl and crictl installation..."
       - "=================================================="
 
-- name: Prepare temporary directory for containerd nerdctl installation
+- name: Prepare temporary directory for containerd nerdctl and crictl installation
   ansible.builtin.include_tasks: 0-setup_temporary_folder.yaml
 
-- name: Download the containerd nerdctl release tarball
+- name: Download the containerd nerdctl and crictl release tarballs
   ansible.builtin.include_tasks: 1-download_files.yaml
 
-- name: Extract the containerd nerdctl release archive
+- name: Extract the containerd nerdctl and crictl release archives
   ansible.builtin.include_tasks: 2-extract_files.yaml
 
-- name: Install containerd nerdctl binaries to the target path
+- name: Install containerd nerdctl and crictl binaries to the target path
   ansible.builtin.include_tasks: 3-copy_files.yaml
 
 - name: Update package cache and install rootless container prerequisites
   ansible.builtin.include_tasks: 4-post_install.yaml
 
-- name: Remove temporary files created during containerd nerdctl installation
+- name: Remove temporary files created during containerd nerdctl and crictl installation
   ansible.builtin.include_tasks: 5-cleanup.yaml
 
-- name: Containerd nerdctl installation completed successfully
+- name: Containerd nerdctl and crictl installation completed successfully
   ansible.builtin.debug:
     msg:
       - "=================================================="
-      - "Containerd nerdctl installation completed successfully."
+      - "Containerd nerdctl and crictl installation completed successfully."
       - "=================================================="

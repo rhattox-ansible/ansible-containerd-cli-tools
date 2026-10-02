@@ -10,3 +10,16 @@
     dest: "{{ temporary_folder }}/nerdctl"
     remote_src: true
     mode: "0755"
+
+- name: Create extraction directory for the crictl archive
+  ansible.builtin.file:
+    path: "{{ temporary_folder }}/crictl"
+    state: directory
+    mode: "0755"
+
+- name: Extract the crictl release archive
+  ansible.builtin.unarchive:
+    src: "{{ temporary_folder }}/crictl.tar.gz"
+    dest: "{{ temporary_folder }}/crictl"
+    remote_src: true
+    mode: "0755"
